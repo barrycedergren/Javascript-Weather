@@ -4,18 +4,18 @@ function GetInfo() {
     var cityName = document.getElementById("cityName");
     cityName.innerHTML = "--"+newName.value+"--";
 
-fetch('https://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid=2560476ea59dc2567929adc1da8ecc6f')
+fetch('https://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid=2560476ea59dc2567929adc1da8ecc6funits=imperial')
 .then(response => response.json())
 .then(data => {
 
     //Getting the min and max values for each day
     for(i = 0; i<5; i++){
-        document.getElementById("day" + (i+1) + "Min").innerHTML = "Min: " + Number(data.list[i].main.temp_min - 273.15).toFixed(1)+ "°";
+        document.getElementById("day" + (i+1) + "Min").innerHTML = "Low: " + Number(data.list[i].main.temp_min - 273.15).toFixed(1)+ "°";
         //Number(1.3450001).toFixed(2); // 1.35
     }
 
     for(i = 0; i<5; i++){
-        document.getElementById("day" + (i+1) + "Max").innerHTML = "Max: " + Number(data.list[i].main.temp_max - 273.15).toFixed(2) + "°";
+        document.getElementById("day" + (i+1) + "Max").innerHTML = "High: " + Number(data.list[i].main.temp_max - 273.15).toFixed(2) + "°";
     }
     //------------------------------------------------------------
 
